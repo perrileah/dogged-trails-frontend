@@ -1,0 +1,15 @@
+#hikes-index img {
+  width: 300px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+#root {
+  font-family: Arial, sans-serif;  
+}
+
+body {
+  background-color: rgb(198, 245, 198)
+}
