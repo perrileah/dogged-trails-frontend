@@ -11,6 +11,7 @@ import { Signup } from "./Signup";
 import { ReviewsIndex } from "./ReviewsIndex";
 import { Routes, Route } from "react-router-dom";
 import { HikesShowPage } from "./HikesShowPage";
+import { ReviewsNew } from "./ReviewsNew";
 
 export function Content() {
   const [hikes, setHikes] = useState([]);
@@ -39,6 +40,14 @@ export function Content() {
     });
   };
 
+  const handleCreateReview = (params, successCallback) => {
+    console.log("handleCreateReview", params);
+    axios.post("http://localhost:3000/reviews.json", params).then((response) => {
+      setReviews([...reviews, response.data]);
+      successCallback();
+    });
+  };
+
   const handleShowHike = (hike) => {
     console.log("handleShowHike", hike);
     setIsHikesShowVisible(true);
@@ -62,13 +71,14 @@ export function Content() {
 
         <Route path="/reviews" element={<ReviewsIndex reviews={reviews} />} />
         <Route path="/hikesnew" element={<HikesNew onCreateHike={handleCreateHike} />} />
+        <Route path="/reviewsnew" element={<ReviewsNew onCreateReview={handleCreateReview} />} />
         <Route path="/hikes" element={<HikesIndex hikes={hikes} onShowHike={handleShowHike} />} />
         <Route path="/hikes/:id" element={<HikesShowPage hikes={hikes} onShowHike={handleShowHike} />} />
       </Routes>
 
       <LogoutLink />
       <Modal show={isHikesShowVisible} onClose={handleClose}>
-        <HikesShow hike={currentHike} />
+        <ReviewsNew />
       </Modal>
     </div>
   );

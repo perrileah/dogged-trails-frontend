@@ -1,5 +1,9 @@
+import { useState } from "react";
+import { ReviewsNew } from "./ReviewsNew";
+
 export function HikesIndex(props) {
   console.log(props);
+
   return (
     <div id="hikes-index">
       <h1>All hikes</h1>
@@ -7,12 +11,23 @@ export function HikesIndex(props) {
         <div key={hike.id} className="hikes">
           <h2>{hike.name}</h2>
           <img src={hike.image_url} alt="image url" />
-          <p>{hike.park_id}</p>
-          <p>{hike.distance}</p>
-          <p>{hike.time}</p>
-          <p>{hike.route_type}</p>
-          <p>{hike.dog_friendly}</p>
-          <button onClick={() => props.onShowHike(hike)}>More info</button>
+          <p>
+            <strong>Distance: </strong>
+            {hike.distance}
+          </p>
+          <p>
+            <strong>Time: </strong>
+            {hike.time}
+          </p>
+          <p>
+            <strong>Route Type: </strong>
+            {hike.route_type}
+          </p>
+          <p>
+            <strong>Dog-Friendly: </strong>
+            {hike.dog_friendly}
+          </p>
+          <button onClick={<ReviewsNew />}>Review this Hike!</button>
         </div>
       ))}
     </div>
