@@ -8,13 +8,22 @@ import { HikesShow } from "./HikesShow";
 import { Login } from "./Login";
 import { LogoutLink } from "./LogoutLink";
 import { Signup } from "./Signup";
-import { SearchBar } from "./SearchBar";
+import { ReviewsIndex } from "./ReviewsIndex";
+import { Routes, Route } from "react-router-dom";
+import { HikesShowPage } from "./HikesShowPage";
 
 export function Content() {
   const [hikes, setHikes] = useState([]);
   const [isHikesShowVisible, setIsHikesShowVisible] = useState(false);
   const [currentHike, setCurrentHike] = useState({});
+  const [reviews, setReviews] = useState([]);
 
+  const handleReviewsIndex = () => {
+    axios.get("http://localhost:3000/reviews.json").then((response) => {
+      console.log(response.data);
+      setReviews(response.data);
+    });
+  };
   const handleHikesIndex = () => {
     axios.get("http://localhost:3000/hikes.json").then((response) => {
       console.log(response.data);
@@ -43,14 +52,21 @@ export function Content() {
 
   useEffect(handleHikesIndex, []);
 
+  useEffect(handleReviewsIndex, []);
+
   return (
     <div>
-      <Signup />
-      <Login />
+      <Routes>
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+
+        <Route path="/reviews" element={<ReviewsIndex reviews={reviews} />} />
+        <Route path="/hikesnew" element={<HikesNew onCreateHike={handleCreateHike} />} />
+        <Route path="/hikes" element={<HikesIndex hikes={hikes} onShowHike={handleShowHike} />} />
+        <Route path="/hikes/:id" element={<HikesShowPage hikes={hikes} onShowHike={handleShowHike} />} />
+      </Routes>
+
       <LogoutLink />
-      <HikesNew onCreateHike={handleCreateHike} />
-      <SearchBar />
-      <HikesIndex hikes={hikes} onShowHike={handleShowHike} />
       <Modal show={isHikesShowVisible} onClose={handleClose}>
         <HikesShow hike={currentHike} />
       </Modal>

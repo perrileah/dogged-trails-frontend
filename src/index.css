@@ -1,3 +1,7 @@
+* {
+  box-sizing:border-box;
+}
+
 #hikes-index img {
   width: 300px;
 }
@@ -12,4 +16,13 @@ html {
 
 body {
   background-color: rgb(198, 245, 198)
+}
+
+.search-bar-container {
+  padding-top:20vh;
+  width: 40%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
 }
