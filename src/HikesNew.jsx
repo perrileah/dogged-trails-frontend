@@ -30,8 +30,8 @@ export function HikesNew(props) {
         <div>
           Dog Friendly:
           <select id="dog_friendly">
-            <option value="true">Yes</option>
-            <option value="false">No</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
           </select>
         </div>
         <button type="submit">Create hike</button>

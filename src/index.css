@@ -26,3 +26,11 @@ body {
   flex-direction: column;
   min-width: 200px;
 }
+
+#parks-index img {
+  width: 300px;
+}
+
+#search-icon {
+  color: black
+}

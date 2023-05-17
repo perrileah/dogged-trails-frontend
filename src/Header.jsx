@@ -16,7 +16,8 @@ export function Header() {
   return (
     <header>
       <nav>
-        <Link to="/">Home</Link> |<Link to="/hikes">All hikes</Link>| <Link to="/hikesnew">Log a Hike</Link> |
+        <Link to="/">Home</Link> |<Link to="/hikes">All hikes</Link>| <Link to="/hikesnew">Log a Hike</Link> |{" "}
+        <Link to="/parks">All parks</Link> |
         {localStorage.jwt === undefined ? (
           <>
             <a href="/signup"> Signup |</a>
