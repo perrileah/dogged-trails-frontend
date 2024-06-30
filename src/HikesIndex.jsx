@@ -22,6 +22,7 @@ export function HikesIndex(props) {
           <option key={hike.id}>{hike.name}</option>
         ))}
       </datalist>
+
       <h1>All hikes</h1>
       {props.hikes
         .filter((hike) => hike.name.toLowerCase().includes(searchFilter.toLowerCase()))

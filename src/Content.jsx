@@ -84,24 +84,26 @@ export function Content() {
   useEffect(handleParksIndex, []);
 
   return (
-    <div>
-      <Routes>
-        <Route path="/" element={<HikesIndex hikes={hikes} onShowHike={handleShowHike} />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
+    <div className="container">
+      <div>
+        <Routes>
+          <Route path="/" element={<HikesIndex hikes={hikes} onShowHike={handleShowHike} />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
 
-        <Route path="/reviews" element={<ReviewsIndex reviews={reviews} />} />
-        <Route path="/hikesnew" element={<HikesNew onCreateHike={handleCreateHike} />} />
-        <Route path="/reviewsnew" element={<ReviewsNew onCreateReview={handleCreateReview} />} />
-        <Route path="/hikes" element={<HikesIndex hikes={hikes} onShowReview={handleShowReview} />} />
-        <Route path="/parks" element={<ParksIndex parks={parks} />} />
-        <Route path="/hikes/:id" element={<HikesShowPage hikes={hikes} onShowHike={handleShowHike} />} />
-      </Routes>
+          <Route path="/reviews" element={<ReviewsIndex reviews={reviews} />} />
+          <Route path="/hikesnew" element={<HikesNew onCreateHike={handleCreateHike} />} />
+          <Route path="/reviewsnew" element={<ReviewsNew onCreateReview={handleCreateReview} />} />
+          <Route path="/hikes" element={<HikesIndex hikes={hikes} onShowReview={handleShowReview} />} />
+          <Route path="/parks" element={<ParksIndex parks={parks} />} />
+          <Route path="/hikes/:id" element={<HikesShowPage hikes={hikes} onShowHike={handleShowHike} />} />
+        </Routes>
 
-      <LogoutLink />
-      <Modal show={isReviewsNewVisible} onClose={handleClose}>
-        <ReviewsNew />
-      </Modal>
+        <LogoutLink />
+        <Modal show={isReviewsNewVisible} onClose={handleClose}>
+          <ReviewsNew />
+        </Modal>
+      </div>
     </div>
   );
 }
